@@ -1,0 +1,97 @@
+= Maven artifacts for Eclipse EMF Transaction
+
+This repository contains the maven artifacts necessary to build and release Eclipse https://www.eclipse.org/emf-transaction/[EMF Transaction] plugins and features
+onto https://bintray.com[Bintray] or to simply build it on your machine.
+
+The builds on Bintray are available https://dl.bintray.com/atlanmod/unveiling[here].
+
+== Available versions
+
+|===
+| Unveiling Transaction Version | EMF Transaction Version | EMF version | Eclipse Version
+
+| 1.11.x
+| 1.11.0
+| 2.15
+| Neon
+
+|===
+
+== Usage
+
+Add the following repository to your `pom.xml` and then choose which EMF dependencies you want to use in your Maven project:
+
+[source, xml]
+----
+    <repositories>
+        <!-- (...) -->
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-atlanmod</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/atlanmod/unveiling</url>
+        </repository>
+    </repositories>
+----
+
+== Eclipse EMF Transaction Artifact
+
+.EMF Common Dependency
+[source, xml]
+----
+<dependency>
+    <groupId>org.atlanmod.unveiling</groupId>
+    <artifactId>org.eclipse.emf.transaction</artifactId>
+    <type>pom</type>
+    <version>${unveiling.transaction.version}</version>
+</dependency>
+----
+
+== Build steps
+
+=== Versioning
+
+When building you should first make sure that the pom and manifest versions are compatible.
+
+When pom versions end with `-SNAPSHOT`, `Bundle-Version` in all MANIFEST.MF files should end with `.qualifier`.
+When pom versions don't have `-SNAPSHOT`, remove `.qualifier` in MANIFEST files.
+
+=== Building
+
+You can build it yourself with following command inside the cdo-maven folder:
+
+```
+$ mvn clean install
+```
+
+=== Releasing
+
+> Only for contributors.
+
+Before releasing on maven central, make sure that pom versions end with `-SNAPSHOT` and
+MANIFEST versions *do not end* with `.qualifier`, but have the correct release version number.
+
+To release on Bintray, execute:
+
+[source,shell]
+----
+mvn release:clean release:prepare
+----
+
+followed by:
+
+[source,shell]
+----
+mvn release:perform
+----
+
+=== Update POM and MANIFEST.MF versions
+
+[source,shell]
+----
+mvn versions:set -DnewVersion=2.23.1-SNAPSHOT -DautoVersionSubmodules=true
+mvn -f unveiling-emf-repackaged tycho-versions:set-version -D newVersion=2.23.1-SNAPSHOT
+mvn -f unveiling-emf-repackaged tycho-versions:update-eclipse-metadata
+----
