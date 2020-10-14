@@ -91,7 +91,7 @@ mvn release:perform
 
 [source,shell]
 ----
-mvn versions:set -DnewVersion=2.23.1-SNAPSHOT -DautoVersionSubmodules=true
-mvn -f unveiling-emf-repackaged tycho-versions:set-version -D newVersion=2.23.1-SNAPSHOT
-mvn -f unveiling-emf-repackaged tycho-versions:update-eclipse-metadata
+mvn versions:set -DnewVersion=1.11.0 -DautoVersionSubmodules=true
+mvn -f org.eclipse.emf.transaction/org.eclipse.emf.transaction.p2/ tycho-versions:set-version -D newVersion=1.11.0
+mvn -f org.eclipse.emf.transaction/org.eclipse.emf.transaction.p2/ tycho-versions:update-eclipse-metadata
 ----

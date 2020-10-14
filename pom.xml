@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.atlanmod.unveiling</groupId>
     <artifactId>unveiling-transaction</artifactId>
-    <version>1.11.0-SNAPSHOT</version>
+    <version>1.11.0</version>
     <packaging>pom</packaging>
     <name>Unveiling EMF Transaction</name>
 
@@ -45,7 +46,7 @@
         <url>scm:git:git@github.com:unveiling/unveiling-transaction.git</url>
         <connection>scm:git:git@github.com:unveiling/unveiling-transaction.git</connection>
         <developerConnection>scm:git:git@github.com:unveiling/unveiling-transaction.git</developerConnection>
-  </scm>
+    </scm>
 
     <modules>
         <module>org.eclipse.emf.transaction</module>
@@ -92,7 +93,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.2</version>
+                    <version>3.0.0-M1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -100,9 +101,9 @@
 
     <distributionManagement>
         <repository>
-            <id>bintray-atlanmod</id>
+            <id>bintray-sunye</id>
             <name>Atlanmod unveiling</name>
-            <url>https://api.bintray.com/maven/atlanmod/unveiling/unveiling-emf/;publish=1</url>
+            <url>https://api.bintray.com/maven/atlanmod/unveiling/unveiling-transaction/;publish=1</url>
         </repository>
     </distributionManagement>
 
