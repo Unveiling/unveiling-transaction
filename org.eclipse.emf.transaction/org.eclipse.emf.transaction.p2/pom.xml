@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>unveiling-transaction</artifactId>
+        <artifactId>unveiling-p2-parent</artifactId>
         <groupId>org.atlanmod.unveiling</groupId>
-        <version>1.11.0</version>
-        <relativePath>../../pom.xml</relativePath>
+        <version>1.0.0</version>
+        <relativePath/>
     </parent>
 
     <artifactId>org.eclipse.emf.transaction.p2</artifactId>
     <packaging>eclipse-plugin</packaging>
+
+    <properties>
+        <emf.version>2.15.0</emf.version>
+        <eclipse.version>neon</eclipse.version>
+    </properties>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-versions-plugin</artifactId>
-                <version>${tycho.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-maven-plugin</artifactId>
-                <version>${tycho.version}</version>
                 <extensions>true</extensions>
             </plugin>
 
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-packaging-plugin</artifactId>
-                <version>${tycho.version}</version>
                 <configuration>
                     <strictVersions>false</strictVersions>
                 </configuration>
@@ -37,7 +41,6 @@
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-source-plugin</artifactId>
-                <version>${tycho.version}</version>
                 <executions>
                     <execution>
                         <id>plugin-source</id>
@@ -80,7 +83,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/main/assembly/repackaged.xml</descriptor>
@@ -98,4 +100,22 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>eclipse-releases</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/releases/${eclipse.version}/</url>
+        </repository>
+        <repository>
+            <id>transaction</id>
+            <layout>p2</layout>
+            <url>https://download.eclipse.org/modeling/emf/transaction/updates/releases/R201805140824/</url>
+        </repository>
+        <repository>
+            <id>emf</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/modeling/emf/emf/builds/release/2.15/</url>
+        </repository>
+    </repositories>
 </project>

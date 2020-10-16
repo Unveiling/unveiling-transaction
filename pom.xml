@@ -1,6 +1,11 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>unveiling-parent</artifactId>
+        <groupId>org.atlanmod.unveiling</groupId>
+        <version>1.0.0</version>
+    </parent>
 
     <groupId>org.atlanmod.unveiling</groupId>
     <artifactId>unveiling-transaction</artifactId>
@@ -13,7 +18,6 @@
     </description>
 
     <properties>
-        <tycho.version>2.0.0</tycho.version>
         <emf.version>2.15.0</emf.version>
         <eclipse.version>neon</eclipse.version>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -22,25 +26,10 @@
         <eclipse.platform.version>[3.6.0,4.0.0)</eclipse.platform.version>
     </properties>
 
-    <licenses>
-        <license>
-            <name>EPL</name>
-            <url>www.eclipse.org/legal/epl-v10.html</url>
-        </license>
-    </licenses>
-
     <issueManagement>
         <system>GitHub Issues</system>
         <url>https://github.com/unveiling/unveiling-transaction/issues</url>
     </issueManagement>
-
-    <developers>
-        <developer>
-            <id>sunye</id>
-            <name>G. Sunyé</name>
-            <email>sunye@protonmail.com</email>
-        </developer>
-    </developers>
 
     <scm>
         <url>scm:git:git@github.com:unveiling/unveiling-transaction.git</url>
@@ -53,23 +42,6 @@
         <module>org.eclipse.emf.transaction/org.eclipse.emf.transaction.p2</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>eclipse-releases</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/${eclipse.version}/</url>
-        </repository>
-        <repository>
-            <id>transaction</id>
-            <layout>p2</layout>
-            <url>https://download.eclipse.org/modeling/emf/transaction/updates/releases/R201805140824/</url>
-        </repository>
-        <repository>
-            <id>emf</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/modeling/emf/emf/builds/release/2.15/</url>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -78,25 +50,6 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.2.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.1.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.0.0-M1</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <distributionManagement>
